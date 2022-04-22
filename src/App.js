@@ -1,9 +1,9 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import SignInPage from './pages/SignIn'
-import SignUpPage from './pages/SignUp'
-import HomePage from './pages/Home'
-import EditProfilePage from './pages/EditProfile'
+import SignInPage from './routes/signin'
+import SignUpPage from './routes/signup'
+import HomePage from './routes/home'
+import ProfilePage from './routes/profile'
 
 function App () {
   return (
@@ -12,7 +12,7 @@ function App () {
         <Route path="/" element={<SignInPage />} />
         <Route path="sign_up" element={<SignUpPage />} />
         <Route path="home" element={<HomePage />} />
-        <Route path="edit_profile" element={<EditProfilePage />} />
+        <Route path="edit_profile" element={<ProfilePage />} />
       </Routes>
     </div>
   )
