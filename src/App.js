@@ -6,8 +6,9 @@ import HomePage from './routes/home'
 import ProfilePage from './routes/profile'
 
 function App () {
+  console.log('alow')
   return (
-    <div >
+    <div>
       <Routes>
         <Route path="/" element={<SignInPage />} />
         <Route path="sign_up" element={<SignUpPage />} />
