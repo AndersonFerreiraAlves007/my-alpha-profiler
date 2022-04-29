@@ -46,7 +46,6 @@ const SignInPage = () => {
            </S.Div>
         <S.Div className='actions'>
           <Button btnType='submit' btnName='Entrar'/>
-          <button type='button' onClick={() => { console.log('hello') }}>trocar cor</button>
         </S.Div>
       </S.Form>
     </S.Div>
