@@ -14,20 +14,20 @@ const CustomRoute = ({ isPrivate, ...rest }) => {
     return <h1>Loading...</h1>
   }
   if (isPrivate && !authenticated) {
-    return <Redirect to='/' />
+    return <Redirect to="/" />
   }
   return <Route {...rest} />
 }
 
 const Routes = () => {
-    return (
-        <Switch>
-            <CustomRoute exact path='/' component={SignInPage} />
-            <CustomRoute exact path='sign_up' component={SignUpPage} />
-            <CustomRoute isPrivate exact path='home' component={HomePage} />
-            <CustomRoute isPrivate exact path='edit_profile' component={ProfilePage}
-        </Switch>
-    )
+  return (
+    <Switch>
+      <CustomRoute exact path="/" component={SignInPage} />
+      <CustomRoute exact path="sign_up" component={SignUpPage} />
+      <CustomRoute isPrivate exact path="home" component={HomePage} />
+      <CustomRoute isPrivate exact path="edit_profile" component={ProfilePage} />
+    </Switch>
+  )
 }
 
 export default Routes
