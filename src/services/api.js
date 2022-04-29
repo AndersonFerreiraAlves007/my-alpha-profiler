@@ -66,7 +66,7 @@ class BancoDados {
   }
 
   async register (username, password) {
-    const user = await request(`${this.host}/users/register`, 'POST', {
+    const user = await request(`${this.host}/users`, 'POST', {
       username,
       password
     })
