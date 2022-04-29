@@ -21,5 +21,6 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             npm install
             npm run build
+            rm -r ${{ secrets.PROJECT_BUILD_PATH }}
+            mkdir ${{ secrets.PROJECT_BUILD_PATH }}
             mv build/* ${{ secrets.PROJECT_BUILD_PATH }}
-            
