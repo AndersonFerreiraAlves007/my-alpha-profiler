@@ -1,5 +1,5 @@
-const HOST_API = 'http://localhost:3333'
-const HOST_FRONTEND = 'http://localhost:3334'
+const HOST_API = process.env.REACT_APP_HOST_API
+const HOST_FRONTEND = process.env.REACT_APP_HOST_FRONTEND
 
 export {
   HOST_API,
