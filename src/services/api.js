@@ -53,9 +53,9 @@ class BancoDados {
     return await request(`${this.host}/users/${id}`, 'GET')
   }
 
-  async login (username, password) {
+  async login (email, password) { // o signin é feito com email <-----------
     const { user_id: userId, token } = await request(`${this.host}/users/login`, 'POST', {
-      username,
+      email,
       password
     })
 
@@ -66,7 +66,7 @@ class BancoDados {
   }
 
   async register (username, password) {
-    const user = await request(`${this.host}/users/register`, 'POST', {
+    const user = await request(`${this.host}/users`, 'POST', {
       username,
       password
     })
