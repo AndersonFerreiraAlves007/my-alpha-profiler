@@ -30,6 +30,7 @@ export default function useAuth () {
   async function handleLogin (email, password) {
     const { token, user_id: userID } = await login(email, password)
     localStorage.setItem('token', JSON.stringify(token))
+    localStorage.setItem('userid', userID)
     setAuthenticated(true)
     setUserData({ ...userData, id: userID })
     navigate('home')

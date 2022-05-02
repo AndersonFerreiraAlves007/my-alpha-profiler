@@ -6,6 +6,7 @@ import ProfilePage from './pages/profile'
 import HomePage from './pages/home/index.jsx'
 
 function App () {
+  console.log('alow')
   return (
     <div>
       <Routes>
