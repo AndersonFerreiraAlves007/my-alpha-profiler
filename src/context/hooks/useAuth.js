@@ -25,9 +25,6 @@ export default function useAuth () {
   useEffect(() => {
     console.log({ userData })
   }, [userData])
-  /*  useEffect(() => {
-    if (authenticated) navigate('home')
-  }, [authenticated]) */
 
   async function handleLogin (email, password) {
     const { token, user_id: userID } = await login(email, password)
