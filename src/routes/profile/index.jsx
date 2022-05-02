@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useContext, useEffect } from 'react'
 import * as S from './styles.js'
+import { ApiContext } from './../../context/api.context'
 // import iconPerfil from './../../assets/images/icons-perfil.svg'
 function getCurrentDate () {
   const day = new Date().getDate()
@@ -15,7 +16,7 @@ const ProfilePage = () => {
   const [birthDate, setBirthDate] = useState(getCurrentDate())
   const refFileUp = useRef(null)
   const [fileUp, setFileUp] = useState('')
-
+  // const { getUser, updateUser } = useContext(ApiContext)
   function encodeImageFileURL () {
     const fileSelect = refFileUp.current.files
 
@@ -32,7 +33,9 @@ const ProfilePage = () => {
       fileReader.readAsDataURL(fileSelector)
     }
   }
+  useEffect(() => {
 
+  }, [])
   return (
     <S.Main className="main">
       <S.FieldFormDiv className="field-edit-user">
