@@ -104,7 +104,7 @@ const ProfilePage = () => {
               onChange={(event) => setNewPassword(event.target.value)}
               value={newPassword}
             />
-            {!(regexPassword.test(newPassword)) && <div >
+            {!(newPassword !== '' && regexPassword.test(newPassword)) && <div >
                   <spam style={{ color: 'red' }}>A senha deve possuir no mínimo 8 caracteres e pelo menos 1 número </spam>
             </div>}
           </S.InputDiv>
