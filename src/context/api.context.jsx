@@ -69,10 +69,14 @@ export const ApiProvider = ({ children }) => {
     }
   }
 
-  async function register (email, password) {
+  async function register (name, email, password, birthdate) {
+    console.log({ name, email, password, birthdate })
     const user = await request(`${HOST_API}/users`, 'POST', {
+      name,
       email,
-      password
+      password,
+      birth_date: birthdate,
+      image: ''
     })
     return user
   }

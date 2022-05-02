@@ -1,11 +1,19 @@
-import { useState, useEffect } from 'react'
-
-import history from '../../history'
-import { serverConnection } from '../../services/api'
+import { useState, useEffect, useContext } from 'react'
+import { ApiContext } from '../api.context'
+import { deleteCookies } from '../../utils/cookies'
+import { useNavigate } from 'react-router-dom'
 
 export default function useAuth () {
   const [authenticated, setAuthenticated] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [userData, setUserData] = useState({
+    id: '',
+    name: '',
+    email: '',
+    birthday: '',
+    password: ''
+  })
+  const { login, getUser } = useContext(ApiContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -13,23 +21,46 @@ export default function useAuth () {
     if (token) {
       setAuthenticated(true)
     }
-
-    setLoading(false)
   }, [])
 
-  async function handleLogin () {
-    const { token } = await serverConnection.login
+  useEffect(() => {
+    console.log({ userData })
+  }, [userData])
 
+  async function handleLogin (email, password) {
+    const { token, user_id: userID } = await login(email, password)
     localStorage.setItem('token', JSON.stringify(token))
+    localStorage.setItem('userid', userID)
     setAuthenticated(true)
-    history.push('home')
+    setUserData({ ...userData, id: userID })
+    navigate('home')
+  }
+
+  async function retrieveData (userID) {
+    const { name, email, birth_date: birthDay } = await getUser(userID)
+    setUserData({
+      ...userData,
+      name,
+      email,
+      birthday: birthDay
+    })
   }
 
   function handleLogout () {
     setAuthenticated(false)
+    setUserData({})
+    localStorage.clear()
+    deleteCookies()
     localStorage.removeItem('token')
-    history.push('/')
+    navigate('/')
   }
 
-  return { authenticated, loading, handleLogin, handleLogout }
+  return {
+    authenticated,
+    userData,
+    handleLogin,
+    handleLogout,
+    setUserData,
+    retrieveData
+  }
 }

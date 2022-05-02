@@ -4,15 +4,21 @@ import './index.css'
 import { DropdownProvider } from './context/dropdown.context'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import { ApiProvider } from './context/api.context'
+import { AuthProvider } from './context/auth.context'
 import { BrowserRouter } from 'react-router-dom'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <DropdownProvider>
-        <App />
-      </DropdownProvider>
+      <ApiProvider>
+        <AuthProvider>
+          <DropdownProvider>
+            <App />
+          </DropdownProvider>
+        </AuthProvider>
+      </ApiProvider>
     </BrowserRouter>
   </React.StrictMode>
 )

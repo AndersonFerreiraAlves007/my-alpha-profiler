@@ -32,7 +32,8 @@ export const Div = styled.div`
     &.actions button{
         text-align: center;
         margin-top: 1rem;
-        height: 30px;
-        width: 60px;
+        height: 40px;
+        width: 70px;
+        margin: 0 10px;
     }
 `
