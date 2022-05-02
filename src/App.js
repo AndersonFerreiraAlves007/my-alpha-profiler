@@ -1,18 +1,33 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import SignInPage from './routes/signin/index'
-import SignUpPage from './routes/signup'
-import ProfilePage from './routes/profile'
-import HomePage from './routes/home'
+import React/* , { useContext } */ from 'react'
+import { Routes, Route/* , useNavigate */ } from 'react-router-dom'
+// import { AuthContext } from './context/auth.context.jsx'
+import SignInPage from './pages/signin'
+import SignUpPage from './pages/signup'
+import ProfilePage from './pages/profile'
+import HomePage from './pages/home/index.jsx'
 
 function App () {
+  /* const { authenticated } = useContext(AuthContext)
+  const navigate = useNavigate() */
   return (
     <div>
       <Routes>
-        <Route path="/" element={<SignInPage />} />
-        <Route path="sign_up" element={<SignUpPage />} />
-        <Route path="home" element={<HomePage />} />
-        <Route path="edit_profile" element={<ProfilePage />} />
+        <Route exact path="/" element={<SignInPage />} />
+        <Route exact path="sign_up" element={<SignUpPage />} />
+        {/* {authenticated
+          ? ( */}
+          <Route exact path="home" element={<HomePage />} />
+          {/*   )
+          : (
+              navigate('/')
+            )} */}
+        {/* {authenticated
+          ? ( */}
+          <Route exact path="edit_profile" element={<ProfilePage />} />
+          {/*   )
+          : (
+              navigate('/')
+            )} */}
       </Routes>
     </div>
   )
