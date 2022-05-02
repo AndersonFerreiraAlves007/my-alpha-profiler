@@ -7,6 +7,9 @@
 
 # testing
 /coverage
+/src/ProtectedRoutes.jsx
+/src/Views.js
+/src/App2.js
 
 # production
 /build
