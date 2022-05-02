@@ -78,3 +78,7 @@ export const Main = styled.div`
    max-height: min-content;
    
 `
+export const warningValidation = styled.div`
+
+
+`
