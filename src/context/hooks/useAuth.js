@@ -9,7 +9,8 @@ export default function useAuth () {
     id: '',
     name: '',
     email: '',
-    birthday: ''
+    birthday: '',
+    password: ''
   })
   const { login, getUser } = useContext(ApiContext)
   const navigate = useNavigate()
