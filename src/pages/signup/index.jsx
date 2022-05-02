@@ -1,6 +1,6 @@
-import React, { useState/* , useContext */ } from 'react'
-
-// import { AuthContext } from '../../context/auth.context.jsx'
+import React, { useState, useContext } from 'react'
+import { ApiContext } from '../../context/api.context.jsx'
+import { AuthContext } from '../../context/auth.context.jsx'
 import FormInput from '../../components/Form-input/index'
 import Button from '../../components/Button/index'
 import * as S from './styles.js'
@@ -14,18 +14,19 @@ const defaultFormFields = {
 
 const SignUpPage = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
-  const { displayName, email, password, confirmPassword } = formFields
+  const { displayName, email, password, confirmPassword, birthdate } = formFields
 
-  // const { setUserData } = useContext(AuthContext)
+  const { register } = useContext(ApiContext)
+  const { handleLogin } = useContext(AuthContext)
 
   const handleChange = (event) => {
     const { name, value } = event.target
     setFormFields({ ...formFields, [name]: value })
   }
 
-  /* const resetFormFields = () => {
+  const resetFormFields = () => {
     setFormFields(defaultFormFields)
-  } */
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -34,14 +35,13 @@ const SignUpPage = () => {
       alert('passwords do not match')
       return
     }
-
+    console.log(formFields)
     try {
-      /* const { user } = await createAuthUserWithEmailAndPasword(email, password)
+      await register(displayName, email, password, birthdate)
 
-      setCurrentUser(user)
+      handleLogin(email, password)
 
-      await createUserDocumentFromAuth(user, { displayName })
-      resetFormFields() */
+      resetFormFields()
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         alert('Cannot create user, email already in use')
@@ -53,8 +53,8 @@ const SignUpPage = () => {
 
   return (
     <S.Div className="sign-up-container">
-      <h2>Dont have an account?</h2>
-      <span>Sign up with your email and password</span>
+      <h2>Ainda não tem uma conta?</h2>
+      <span>Insira os dados abaixo para criar sua conta</span>
       <S.Form onSubmit={handleSubmit}>
         <FormInput
           label="Display Name"
@@ -75,6 +75,15 @@ const SignUpPage = () => {
         />
 
         <FormInput
+          label="Data de Nascimento"
+          type="date"
+          required
+          name="birthdate"
+          onChange={handleChange}
+          value={birthdate}
+        />
+
+        <FormInput
           label="Password"
           type="password"
           required
@@ -92,7 +101,7 @@ const SignUpPage = () => {
           value={confirmPassword}
         />
 
-        <Button type="submit" btnName="Sign Up" onClickHandler={handleSubmit}/>
+        <Button type="submit" btnName="Sign Up" onClickHandler={handleSubmit} />
       </S.Form>
     </S.Div>
   )

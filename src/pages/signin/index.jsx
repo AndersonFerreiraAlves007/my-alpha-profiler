@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/auth.context.jsx'
 import * as S from './styles.js'
 import Button from '../../components/Button/index.jsx'
@@ -28,7 +29,6 @@ const SignInPage = () => {
       <h2 className="title">Sign In</h2>
       <S.Form onSubmit={handleSubmit} className="from">
         <S.Div className="field">
-
           <Input
             inputString="email"
             inputPlaceholder="E-mail"
@@ -48,6 +48,9 @@ const SignInPage = () => {
             btnName="Entrar"
             // onClickHandler={handleSubmit}
           />
+          <Link to="/sign_up">
+            <button className="nextPage" type="button">Criar Conta</button>
+          </Link>
         </S.Div>
       </S.Form>
     </S.Div>

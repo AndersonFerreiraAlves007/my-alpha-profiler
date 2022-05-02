@@ -1,19 +1,19 @@
 import React from 'react'
-
+import * as S from './styles'
 const FormInput = ({ label, ...otherProps }) => {
   return (
-        <div className="group">
-            <input
-                className="form-input"
+        <S.Div className='group'>
+            <S.Input
+                className='form-input'
                 {...otherProps}
             />
             {label && (
-                <label
-                    className={`${otherProps.value.length ? 'shrink' : null} form-input-label`}>{label}
-                </label>
+                <S.Label
+                    >{label}
+                </S.Label>
             )}
 
-        </div>
+        </S.Div>
 
   )
 }
