@@ -61,6 +61,7 @@ const ProfilePage = () => {
 
   return (
     <S.Main className="main">
+       <button type='button' style={{ position: 'fixed', left: '20px', top: '20px', width: '100px' }} onClick={() => { navigate('/home') }} >Voltar</button>
       <S.FieldFormDiv className="field-edit-user">
         <S.Div>
           <S.ImgPerfil src={fileUp} alt="" />

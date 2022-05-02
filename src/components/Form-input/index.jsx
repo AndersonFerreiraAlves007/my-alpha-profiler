@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 const FormInput = ({ label, ...otherProps }) => {
-    return (
+  return (
         <div className="group">
             <input
                 className="form-input"
@@ -9,13 +9,13 @@ const FormInput = ({ label, ...otherProps }) => {
             />
             {label && (
                 <label
-                    className={`${otherProps.value.length ? "shrink" : null} form-input-label`}>{label}
+                    className={`${otherProps.value.length ? 'shrink' : null} form-input-label`}>{label}
                 </label>
             )}
-            
+
         </div>
 
-    )
-};
+  )
+}
 
-export default FormInput;
+export default FormInput
